@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" href="favicon.png" />
+  <title>Abra — Cinematic product animations</title>
+  <meta name="description" content="Turn your screenshots into cinematic product videos in minutes. One-time purchase for macOS." />
+  <meta property="og:title" content="Abra — Cinematic product animations" />
+  <meta property="og:description" content="Turn your screenshots into cinematic product videos in minutes." />
+  <meta property="og:image" content="https://abra.video/og.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #080808;
+      --surface: #101010;
+      --border: rgba(255,255,255,0.07);
+      --text: #F0F0F0;
+      --muted: #555;
+      --subtle: #2a2a2a;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.6;
+    }
+
+    /* ── Nav ── */
+    nav { display: none; }
+
+    /* ── Hero ── */
+    .hero {
+      min-height: 100svh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 80px 24px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      width: 700px;
+      height: 700px;
+      background: radial-gradient(circle, rgba(255,255,255,0.03) 0%, transparent 70%);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -55%);
+      pointer-events: none;
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 5px 14px;
+      border-radius: 99px;
+      border: 1px solid var(--border);
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 32px;
+      letter-spacing: 0.02em;
+    }
+
+    .hero-eyebrow span {
+      display: inline-block;
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: #E8E8E8;
+    }
+
+    .hero h1 {
+      font-size: clamp(36px, 6vw, 72px);
+      font-weight: 650;
+      line-height: 1.08;
+      letter-spacing: -0.04em;
+      color: #fff;
+      max-width: 680px;
+      margin-bottom: 24px;
+    }
+
+    .hero h1 em {
+      font-style: normal;
+      color: #666;
+    }
+
+    .hero p {
+      font-size: 17px;
+      color: var(--muted);
+      max-width: 420px;
+      margin-bottom: 48px;
+      line-height: 1.7;
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      border-radius: 12px;
+      background: #F0F0F0;
+      color: #080808;
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      box-shadow: 0 0 40px rgba(255,255,255,0.18), 0 0 80px rgba(255,255,255,0.07);
+      transition: background 0.4s ease, transform 0.5s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.5s ease;
+    }
+    .btn-primary:hover {
+      background: #fff;
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 0 60px rgba(255,255,255,0.28), 0 0 120px rgba(255,255,255,0.12);
+    }
+    .btn-primary:active { transform: translateY(0) scale(0.98); transition-duration: 0.15s; box-shadow: 0 0 30px rgba(255,255,255,0.15); }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      border-radius: 12px;
+      background: transparent;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 500;
+      text-decoration: none;
+      cursor: pointer;
+      border: 1px solid var(--border);
+      transition: color 0.15s, border-color 0.15s;
+    }
+    .btn-secondary:hover { color: #E8E8E8; border-color: rgba(255,255,255,0.15); }
+
+    .hero-meta {
+      margin-top: 24px;
+      font-size: 12px;
+      color: #333;
+    }
+
+    /* ── Screenshot ── */
+    .screenshot-wrap {
+      width: 100%;
+      max-width: 960px;
+      margin: 80px auto 0;
+      padding: 0 24px;
+      position: relative;
+    }
+
+    .screenshot {
+      width: 100%;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      aspect-ratio: 16/10;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      box-shadow: 0 40px 120px rgba(0,0,0,0.6);
+    }
+
+    .screenshot-placeholder {
+      color: #222;
+      font-size: 13px;
+      letter-spacing: 0.05em;
+    }
+
+    /* ── Features ── */
+    .features {
+      padding: 120px 24px;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #333;
+      text-align: center;
+      margin-bottom: 64px;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+    }
+
+    .feature {
+      background: var(--bg);
+      padding: 36px 32px;
+    }
+
+    .feature-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .feature h3 {
+      font-size: 15px;
+      font-weight: 600;
+      color: #D0D0D0;
+      margin-bottom: 10px;
+      letter-spacing: -0.02em;
+    }
+
+    .feature p {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    /* ── Pricing ── */
+    .pricing {
+      padding: 80px 24px 120px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 28px;
+      text-align: center;
+    }
+
+    .pricing-icon {
+      width: 88px;
+      height: 88px;
+      flex-shrink: 0;
+    }
+
+    .pricing-icon img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      filter: drop-shadow(0 0 24px rgba(255,255,255,0.12)) drop-shadow(0 0 60px rgba(255,255,255,0.07));
+    }
+
+    .pricing h2 {
+      font-size: clamp(36px, 5vw, 48px);
+      font-weight: 650;
+      letter-spacing: -0.035em;
+      color: #fff;
+      line-height: 1.1;
+      margin: 0;
+    }
+
+    .pricing h2 em {
+      font-style: normal;
+      color: #666;
+    }
+
+    /* ── Footer ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 32px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    footer .footer-links {
+      display: flex;
+      gap: 24px;
+    }
+
+    footer a {
+      font-size: 12px;
+      color: #333;
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+    footer a:hover { color: #888; }
+
+    /* ── Spinner ── */
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .spinner {
+      width: 14px; height: 14px;
+      border: 2px solid rgba(0,0,0,0.2);
+      border-top-color: #0a0a0a;
+      border-radius: 50%;
+      animation: spin 0.6s linear infinite;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 680px) {
+      nav { padding: 0 20px; }
+      .features-grid { grid-template-columns: 1fr; }
+      footer { flex-direction: column; gap: 16px; text-align: center; }
+      footer .footer-links { justify-content: center; }
+    }
+  </style>
+  <script src="https://mcp.figma.com/mcp/html-to-design/capture.js" async></script>
+</head>
+<body>
+
+  <!-- Nav -->
+  <nav>
+    <a href="/" class="nav-logo" aria-label="Abra">
+      <svg width="80" height="21" viewBox="0 0 170 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M75.8899 30.3005H64.7515L63.1603 37.3205H56.7019L64.5175 4.56049H76.1239L83.9395 37.3205H77.4811L75.8899 30.3005ZM66.0619 24.4037H74.5327L70.7419 7.64929H69.8995L66.0619 24.4037Z" fill="white"/>
+        <path d="M93.2202 37.3205H87.3234V4.56049H93.2202V17.4773H94.0626C94.6866 16.1981 95.5914 15.2153 96.777 14.5289C97.9626 13.8113 99.4758 13.4525 101.317 13.4525C102.689 13.4525 103.984 13.7177 105.201 14.2481C106.449 14.7785 107.525 15.5585 108.43 16.5881C109.366 17.5865 110.099 18.8189 110.63 20.2853C111.191 21.7517 111.472 23.4209 111.472 25.2929V26.1353C111.472 28.0385 111.207 29.7233 110.677 31.1897C110.146 32.6561 109.429 33.9041 108.524 34.9337C107.619 35.9321 106.543 36.6965 105.295 37.2269C104.078 37.7261 102.752 37.9757 101.317 37.9757C100.256 37.9757 99.3354 37.8665 98.5554 37.6481C97.7754 37.4297 97.089 37.1333 96.4962 36.7589C95.9346 36.3845 95.451 35.9633 95.0454 35.4953C94.671 34.9961 94.3434 34.4813 94.0626 33.9509H93.2202V37.3205ZM99.3978 32.3597C101.239 32.3597 102.721 31.7981 103.844 30.6749C104.998 29.5205 105.575 27.9605 105.575 25.9949V25.4333C105.575 23.4677 104.998 21.9233 103.844 20.8001C102.721 19.6457 101.239 19.0685 99.3978 19.0685C97.557 19.0685 96.0594 19.6613 94.905 20.8469C93.7818 22.0013 93.2202 23.5301 93.2202 25.4333V25.9949C93.2202 27.8981 93.7818 29.4425 94.905 30.6281C96.0594 31.7825 97.557 32.3597 99.3978 32.3597Z" fill="white"/>
+        <path d="M115.839 14.1077H125.667V17.4773H126.509C126.946 16.1981 127.679 15.2153 128.709 14.5289C129.77 13.8113 131.033 13.4525 132.5 13.4525C134.808 13.4525 136.665 14.1857 138.069 15.6521C139.473 17.0873 140.175 19.2869 140.175 22.2509V23.2805L134.091 23.8421V23.1869C134.091 21.9077 133.763 20.8937 133.108 20.1449C132.453 19.3649 131.47 18.9749 130.16 18.9749C128.849 18.9749 127.82 19.4273 127.071 20.3321C126.322 21.2369 125.948 22.5317 125.948 24.2165V31.7045H131.283V37.3205H115.277V31.7045H120.051V19.7237H115.839V14.1077Z" fill="white"/>
+        <path d="M160.641 33.9509C160.017 35.4173 159.143 36.4625 158.02 37.0865C156.897 37.6793 155.586 37.9757 154.089 37.9757C152.685 37.9757 151.359 37.7105 150.111 37.1801C148.894 36.6497 147.817 35.8697 146.881 34.8401C145.945 33.8105 145.197 32.5625 144.635 31.0961C144.105 29.6297 143.839 27.9605 143.839 26.0885V25.3397C143.839 23.4989 144.105 21.8453 144.635 20.3789C145.165 18.9125 145.883 17.6645 146.788 16.6349C147.693 15.6053 148.738 14.8253 149.923 14.2949C151.14 13.7333 152.435 13.4525 153.808 13.4525C155.461 13.4525 156.787 13.7333 157.786 14.2949C158.815 14.8565 159.627 15.7301 160.219 16.9157H161.062V14.1077H166.959V30.3005C166.959 31.2365 167.38 31.7045 168.222 31.7045H169.111V37.3205H165.087C164.026 37.3205 163.152 37.0085 162.466 36.3845C161.811 35.7605 161.483 34.9493 161.483 33.9509H160.641ZM155.399 32.3597C157.115 32.3597 158.488 31.7981 159.517 30.6749C160.547 29.5205 161.062 27.9605 161.062 25.9949V25.4333C161.062 23.4677 160.547 21.9233 159.517 20.8001C158.488 19.6457 157.115 19.0685 155.399 19.0685C153.683 19.0685 152.31 19.6457 151.281 20.8001C150.251 21.9233 149.736 23.4677 149.736 25.4333V25.9949C149.736 27.9605 150.251 29.5205 151.281 30.6749C152.31 31.7981 153.683 32.3597 155.399 32.3597Z" fill="white"/>
+        <path d="M0.226463 22.2528C-0.0754144 21.9123 -0.075552 21.4085 0.226436 21.0681C1.81887 19.2734 6.70979 13.8003 10.2551 10.255C13.8002 6.70986 19.2731 1.81915 21.068 0.226542C21.4084 -0.075514 21.9121 -0.0755141 22.2526 0.226542C24.0475 1.81915 29.5203 6.70986 33.0655 10.255C36.6107 13.8002 41.5014 19.273 43.094 21.0679C43.396 21.4084 43.396 21.9121 43.094 22.2525C41.5014 24.0474 36.6107 29.5203 33.0655 33.0654C29.5204 36.6105 24.0478 41.501 22.2527 43.0938C21.9122 43.3959 21.4085 43.396 21.0681 43.0938C19.2509 41.4804 13.6579 36.4792 10.0419 32.8523C6.57826 29.3782 1.79812 24.0252 0.226463 22.2528Z" fill="white"/>
+      </svg>
+    </a>
+    <button class="nav-buy" onclick="handleBuy(this)">Buy — $59</button>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div style="margin-bottom: 40px;">
+      <svg width="110" height="29" viewBox="0 0 170 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M75.8899 30.3005H64.7515L63.1603 37.3205H56.7019L64.5175 4.56049H76.1239L83.9395 37.3205H77.4811L75.8899 30.3005ZM66.0619 24.4037H74.5327L70.7419 7.64929H69.8995L66.0619 24.4037Z" fill="white"/>
+        <path d="M93.2202 37.3205H87.3234V4.56049H93.2202V17.4773H94.0626C94.6866 16.1981 95.5914 15.2153 96.777 14.5289C97.9626 13.8113 99.4758 13.4525 101.317 13.4525C102.689 13.4525 103.984 13.7177 105.201 14.2481C106.449 14.7785 107.525 15.5585 108.43 16.5881C109.366 17.5865 110.099 18.8189 110.63 20.2853C111.191 21.7517 111.472 23.4209 111.472 25.2929V26.1353C111.472 28.0385 111.207 29.7233 110.677 31.1897C110.146 32.6561 109.429 33.9041 108.524 34.9337C107.619 35.9321 106.543 36.6965 105.295 37.2269C104.078 37.7261 102.752 37.9757 101.317 37.9757C100.256 37.9757 99.3354 37.8665 98.5554 37.6481C97.7754 37.4297 97.089 37.1333 96.4962 36.7589C95.9346 36.3845 95.451 35.9633 95.0454 35.4953C94.671 34.9961 94.3434 34.4813 94.0626 33.9509H93.2202V37.3205ZM99.3978 32.3597C101.239 32.3597 102.721 31.7981 103.844 30.6749C104.998 29.5205 105.575 27.9605 105.575 25.9949V25.4333C105.575 23.4677 104.998 21.9233 103.844 20.8001C102.721 19.6457 101.239 19.0685 99.3978 19.0685C97.557 19.0685 96.0594 19.6613 94.905 20.8469C93.7818 22.0013 93.2202 23.5301 93.2202 25.4333V25.9949C93.2202 27.8981 93.7818 29.4425 94.905 30.6281C96.0594 31.7825 97.557 32.3597 99.3978 32.3597Z" fill="white"/>
+        <path d="M115.839 14.1077H125.667V17.4773H126.509C126.946 16.1981 127.679 15.2153 128.709 14.5289C129.77 13.8113 131.033 13.4525 132.5 13.4525C134.808 13.4525 136.665 14.1857 138.069 15.6521C139.473 17.0873 140.175 19.2869 140.175 22.2509V23.2805L134.091 23.8421V23.1869C134.091 21.9077 133.763 20.8937 133.108 20.1449C132.453 19.3649 131.47 18.9749 130.16 18.9749C128.849 18.9749 127.82 19.4273 127.071 20.3321C126.322 21.2369 125.948 22.5317 125.948 24.2165V31.7045H131.283V37.3205H115.277V31.7045H120.051V19.7237H115.839V14.1077Z" fill="white"/>
+        <path d="M160.641 33.9509C160.017 35.4173 159.143 36.4625 158.02 37.0865C156.897 37.6793 155.586 37.9757 154.089 37.9757C152.685 37.9757 151.359 37.7105 150.111 37.1801C148.894 36.6497 147.817 35.8697 146.881 34.8401C145.945 33.8105 145.197 32.5625 144.635 31.0961C144.105 29.6297 143.839 27.9605 143.839 26.0885V25.3397C143.839 23.4989 144.105 21.8453 144.635 20.3789C145.165 18.9125 145.883 17.6645 146.788 16.6349C147.693 15.6053 148.738 14.8253 149.923 14.2949C151.14 13.7333 152.435 13.4525 153.808 13.4525C155.461 13.4525 156.787 13.7333 157.786 14.2949C158.815 14.8565 159.627 15.7301 160.219 16.9157H161.062V14.1077H166.959V30.3005C166.959 31.2365 167.38 31.7045 168.222 31.7045H169.111V37.3205H165.087C164.026 37.3205 163.152 37.0085 162.466 36.3845C161.811 35.7605 161.483 34.9493 161.483 33.9509H160.641ZM155.399 32.3597C157.115 32.3597 158.488 31.7981 159.517 30.6749C160.547 29.5205 161.062 27.9605 161.062 25.9949V25.4333C161.062 23.4677 160.547 21.9233 159.517 20.8001C158.488 19.6457 157.115 19.0685 155.399 19.0685C153.683 19.0685 152.31 19.6457 151.281 20.8001C150.251 21.9233 149.736 23.4677 149.736 25.4333V25.9949C149.736 27.9605 150.251 29.5205 151.281 30.6749C152.31 31.7981 153.683 32.3597 155.399 32.3597Z" fill="white"/>
+        <path d="M0.226463 22.2528C-0.0754144 21.9123 -0.075552 21.4085 0.226436 21.0681C1.81887 19.2734 6.70979 13.8003 10.2551 10.255C13.8002 6.70986 19.2731 1.81915 21.068 0.226542C21.4084 -0.075514 21.9121 -0.0755141 22.2526 0.226542C24.0475 1.81915 29.5203 6.70986 33.0655 10.255C36.6107 13.8002 41.5014 19.273 43.094 21.0679C43.396 21.4084 43.396 21.9121 43.094 22.2525C41.5014 24.0474 36.6107 29.5203 33.0655 33.0654C29.5204 36.6105 24.0478 41.501 22.2527 43.0938C21.9122 43.3959 21.4085 43.396 21.0681 43.0938C19.2509 41.4804 13.6579 36.4792 10.0419 32.8523C6.57826 29.3782 1.79812 24.0252 0.226463 22.2528Z" fill="white"/>
+      </svg>
+    </div>
+
+    <h1>Cinematic product animations <em>in minutes</em></h1>
+    <p>Turn your screenshots into beautiful, motion-rich product videos, without After Effects, without the learning curve.</p>
+    <div class="hero-actions">
+      <div style="display:flex;flex-direction:column;align-items:center;gap:10px;">
+        <a href="https://github.com/Boutrup98/abra/releases/download/v1.0.0/Abra-1.0.0-arm64.dmg" class="btn-primary" style="padding: 16px 56px; font-size: 24px; border-radius: 18px; gap: 14px;">
+          <svg width="16" height="19" viewBox="0 0 16 19" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M13.196 10.01c-.022-2.166 1.768-3.21 1.849-3.261-1.008-1.474-2.576-1.676-3.132-1.695-1.327-.136-2.601.79-3.274.79-.682 0-1.722-.775-2.835-.753-1.446.022-2.788.85-3.531 2.146C.86 9.72 1.924 14.18 3.37 16.619c.718 1.04 1.57 2.207 2.684 2.165 1.082-.044 1.488-.695 2.793-.695 1.295 0 1.668.695 2.803.672 1.162-.02 1.895-1.057 2.604-2.104.826-1.204 1.163-2.375 1.18-2.435-.026-.01-2.26-.87-2.238-3.212zM11.07 3.28C11.65 2.573 12.045 1.6 11.932.605c-.84.038-1.87.565-2.473 1.254-.537.618-.998 1.608-.875 2.558.94.072 1.904-.477 2.486-1.136z"/></svg>
+          Download Abra
+        </a>
+      </div>
+    </div>
+    <p class="hero-meta">€49 &nbsp;·&nbsp; One-time purchase &nbsp;·&nbsp; macOS 12+</p>
+
+    <!-- App screenshot -->
+    <div class="screenshot-wrap">
+      <div class="screenshot">
+        <video autoplay loop muted playsinline style="width:100%;height:100%;object-fit:cover;display:block;">
+          <source src="abra.mp4" type="video/mp4" />
+        </video>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Pricing -->
+  <section class="pricing" id="pricing">
+    <div class="pricing-icon">
+      <img src="favicon.png" alt="Abra" />
+    </div>
+    <h2>Pay once <em>use forever</em></h2>
+    <a href="https://github.com/Boutrup98/abra/releases/download/v1.0.0/Abra-1.0.0-arm64.dmg" class="btn-primary" style="padding: 16px 56px; font-size: 24px; border-radius: 18px; gap: 14px;">
+      <svg width="16" height="19" viewBox="0 0 16 19" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M13.196 10.01c-.022-2.166 1.768-3.21 1.849-3.261-1.008-1.474-2.576-1.676-3.132-1.695-1.327-.136-2.601.79-3.274.79-.682 0-1.722-.775-2.835-.753-1.446.022-2.788.85-3.531 2.146C.86 9.72 1.924 14.18 3.37 16.619c.718 1.04 1.57 2.207 2.684 2.165 1.082-.044 1.488-.695 2.793-.695 1.295 0 1.668.695 2.803.672 1.162-.02 1.895-1.057 2.604-2.104.826-1.204 1.163-2.375 1.18-2.435-.026-.01-2.26-.87-2.238-3.212zM11.07 3.28C11.65 2.573 12.045 1.6 11.932.605c-.84.038-1.87.565-2.473 1.254-.537.618-.998 1.608-.875 2.558.94.072 1.904-.477 2.486-1.136z"/></svg>
+      Download Abra
+    </a>
+    <p style="font-size:17px;color:#555;">€49 &nbsp;·&nbsp; One-time purchase &nbsp;·&nbsp; macOS 12+</p>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <a href="/">
+      <svg width="52" height="14" viewBox="0 0 170 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M75.8899 30.3005H64.7515L63.1603 37.3205H56.7019L64.5175 4.56049H76.1239L83.9395 37.3205H77.4811L75.8899 30.3005ZM66.0619 24.4037H74.5327L70.7419 7.64929H69.8995L66.0619 24.4037Z" fill="#333"/>
+        <path d="M93.2202 37.3205H87.3234V4.56049H93.2202V17.4773H94.0626C94.6866 16.1981 95.5914 15.2153 96.777 14.5289C97.9626 13.8113 99.4758 13.4525 101.317 13.4525C102.689 13.4525 103.984 13.7177 105.201 14.2481C106.449 14.7785 107.525 15.5585 108.43 16.5881C109.366 17.5865 110.099 18.8189 110.63 20.2853C111.191 21.7517 111.472 23.4209 111.472 25.2929V26.1353C111.472 28.0385 111.207 29.7233 110.677 31.1897C110.146 32.6561 109.429 33.9041 108.524 34.9337C107.619 35.9321 106.543 36.6965 105.295 37.2269C104.078 37.7261 102.752 37.9757 101.317 37.9757C100.256 37.9757 99.3354 37.8665 98.5554 37.6481C97.7754 37.4297 97.089 37.1333 96.4962 36.7589C95.9346 36.3845 95.451 35.9633 95.0454 35.4953C94.671 34.9961 94.3434 34.4813 94.0626 33.9509H93.2202V37.3205ZM99.3978 32.3597C101.239 32.3597 102.721 31.7981 103.844 30.6749C104.998 29.5205 105.575 27.9605 105.575 25.9949V25.4333C105.575 23.4677 104.998 21.9233 103.844 20.8001C102.721 19.6457 101.239 19.0685 99.3978 19.0685C97.557 19.0685 96.0594 19.6613 94.905 20.8469C93.7818 22.0013 93.2202 23.5301 93.2202 25.4333V25.9949C93.2202 27.8981 93.7818 29.4425 94.905 30.6281C96.0594 31.7825 97.557 32.3597 99.3978 32.3597Z" fill="#333"/>
+        <path d="M115.839 14.1077H125.667V17.4773H126.509C126.946 16.1981 127.679 15.2153 128.709 14.5289C129.77 13.8113 131.033 13.4525 132.5 13.4525C134.808 13.4525 136.665 14.1857 138.069 15.6521C139.473 17.0873 140.175 19.2869 140.175 22.2509V23.2805L134.091 23.8421V23.1869C134.091 21.9077 133.763 20.8937 133.108 20.1449C132.453 19.3649 131.47 18.9749 130.16 18.9749C128.849 18.9749 127.82 19.4273 127.071 20.3321C126.322 21.2369 125.948 22.5317 125.948 24.2165V31.7045H131.283V37.3205H115.277V31.7045H120.051V19.7237H115.839V14.1077Z" fill="#333"/>
+        <path d="M160.641 33.9509C160.017 35.4173 159.143 36.4625 158.02 37.0865C156.897 37.6793 155.586 37.9757 154.089 37.9757C152.685 37.9757 151.359 37.7105 150.111 37.1801C148.894 36.6497 147.817 35.8697 146.881 34.8401C145.945 33.8105 145.197 32.5625 144.635 31.0961C144.105 29.6297 143.839 27.9605 143.839 26.0885V25.3397C143.839 23.4989 144.105 21.8453 144.635 20.3789C145.165 18.9125 145.883 17.6645 146.788 16.6349C147.693 15.6053 148.738 14.8253 149.923 14.2949C151.14 13.7333 152.435 13.4525 153.808 13.4525C155.461 13.4525 156.787 13.7333 157.786 14.2949C158.815 14.8565 159.627 15.7301 160.219 16.9157H161.062V14.1077H166.959V30.3005C166.959 31.2365 167.38 31.7045 168.222 31.7045H169.111V37.3205H165.087C164.026 37.3205 163.152 37.0085 162.466 36.3845C161.811 35.7605 161.483 34.9493 161.483 33.9509H160.641ZM155.399 32.3597C157.115 32.3597 158.488 31.7981 159.517 30.6749C160.547 29.5205 161.062 27.9605 161.062 25.9949V25.4333C161.062 23.4677 160.547 21.9233 159.517 20.8001C158.488 19.6457 157.115 19.0685 155.399 19.0685C153.683 19.0685 152.31 19.6457 151.281 20.8001C150.251 21.9233 149.736 23.4677 149.736 25.4333V25.9949C149.736 27.9605 150.251 29.5205 151.281 30.6749C152.31 31.7981 153.683 32.3597 155.399 32.3597Z" fill="#333"/>
+        <path d="M0.226463 22.2528C-0.0754144 21.9123 -0.075552 21.4085 0.226436 21.0681C1.81887 19.2734 6.70979 13.8003 10.2551 10.255C13.8002 6.70986 19.2731 1.81915 21.068 0.226542C21.4084 -0.075514 21.9121 -0.0755141 22.2526 0.226542C24.0475 1.81915 29.5203 6.70986 33.0655 10.255C36.6107 13.8002 41.5014 19.273 43.094 21.0679C43.396 21.4084 43.396 21.9121 43.094 22.2525C41.5014 24.0474 36.6107 29.5203 33.0655 33.0654C29.5204 36.6105 24.0478 41.501 22.2527 43.0938C21.9122 43.3959 21.4085 43.396 21.0681 43.0938C19.2509 41.4804 13.6579 36.4792 10.0419 32.8523C6.57826 29.3782 1.79812 24.0252 0.226463 22.2528Z" fill="#333"/>
+      </svg>
+    </a>
+    <div class="footer-links">
+      <a href="mailto:contact@abra.video">Contact</a>
+      <a href="/privacy.html">Privacy</a>
+      <a href="/terms.html">Terms</a>
+    </div>
+  </footer>
+
+  <script>
+    async function handleBuy(btn) {
+      const original = btn.innerHTML;
+      btn.disabled = true;
+      btn.innerHTML = '<div class="spinner"></div>';
+
+      try {
+        const res = await fetch('https://gcbdesebzukwudxmedcc.supabase.co/functions/v1/checkout', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({}),
+        });
+        const { url } = await res.json();
+        window.location.href = url;
+      } catch {
+        btn.disabled = false;
+        btn.innerHTML = original;
+        alert('Could not start checkout. Please try again.');
+      }
+    }
+  </script>
+
+</body>
+</html>

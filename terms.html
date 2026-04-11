@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" href="favicon.png" />
+  <title>Terms of Service — Abra</title>
+  <meta name="description" content="Terms of Service for Abra — cinematic product animation software." />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #080808;
+      --surface: #101010;
+      --border: rgba(255,255,255,0.07);
+      --text: #F2F2F2;
+      --muted: #888;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.7;
+      font-size: 15px;
+    }
+
+    /* ── Nav ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 40px;
+      height: 60px;
+      background: rgba(8,8,8,0.88);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-back {
+      font-size: 13px;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+    .nav-back:hover { color: var(--text); }
+
+    /* ── Content ── */
+    main {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 120px 24px 100px;
+    }
+
+    .page-label {
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #333;
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: clamp(32px, 5vw, 48px);
+      font-weight: 650;
+      color: var(--text);
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      margin-bottom: 12px;
+    }
+
+    .revised {
+      font-size: 13px;
+      color: #333;
+      margin-bottom: 64px;
+      padding-bottom: 40px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    section {
+      margin-bottom: 52px;
+    }
+
+    h2 {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 16px;
+      letter-spacing: -0.01em;
+    }
+
+    p {
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+    p:last-child { margin-bottom: 0; }
+
+    ul {
+      color: var(--muted);
+      padding-left: 0;
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    ul li {
+      padding-left: 20px;
+      position: relative;
+    }
+
+    ul li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: #333;
+    }
+
+    a {
+      color: var(--text);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-color: #333;
+      transition: text-decoration-color 0.15s;
+    }
+    a:hover { text-decoration-color: var(--muted); }
+
+    .address {
+      font-style: normal;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+/* ── Footer ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 32px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 24px;
+    }
+
+    footer a {
+      font-size: 12px;
+      color: #333;
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+    footer a:hover { color: #888; }
+
+    @media (max-width: 600px) {
+      nav { padding: 0 20px; }
+      main { padding-top: 100px; }
+      footer { flex-direction: column; gap: 16px; text-align: center; }
+      .footer-links { justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="/">
+      <svg width="52" height="14" viewBox="0 0 170 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M75.8899 30.3005H64.7515L63.1603 37.3205H56.7019L64.5175 4.56049H76.1239L83.9395 37.3205H77.4811L75.8899 30.3005ZM66.0619 24.4037H74.5327L70.7419 7.64929H69.8995L66.0619 24.4037Z" fill="#555"/>
+        <path d="M93.2202 37.3205H87.3234V4.56049H93.2202V17.4773H94.0626C94.6866 16.1981 95.5914 15.2153 96.777 14.5289C97.9626 13.8113 99.4758 13.4525 101.317 13.4525C102.689 13.4525 103.984 13.7177 105.201 14.2481C106.449 14.7785 107.525 15.5585 108.43 16.5881C109.366 17.5865 110.099 18.8189 110.63 20.2853C111.191 21.7517 111.472 23.4209 111.472 25.2929V26.1353C111.472 28.0385 111.207 29.7233 110.677 31.1897C110.146 32.6561 109.429 33.9041 108.524 34.9337C107.619 35.9321 106.543 36.6965 105.295 37.2269C104.078 37.7261 102.752 37.9757 101.317 37.9757C100.256 37.9757 99.3354 37.8665 98.5554 37.6481C97.7754 37.4297 97.089 37.1333 96.4962 36.7589C95.9346 36.3845 95.451 35.9633 95.0454 35.4953C94.671 34.9961 94.3434 34.4813 94.0626 33.9509H93.2202V37.3205ZM99.3978 32.3597C101.239 32.3597 102.721 31.7981 103.844 30.6749C104.998 29.5205 105.575 27.9605 105.575 25.9949V25.4333C105.575 23.4677 104.998 21.9233 103.844 20.8001C102.721 19.6457 101.239 19.0685 99.3978 19.0685C97.557 19.0685 96.0594 19.6613 94.905 20.8469C93.7818 22.0013 93.2202 23.5301 93.2202 25.4333V25.9949C93.2202 27.8981 93.7818 29.4425 94.905 30.6281C96.0594 31.7825 97.557 32.3597 99.3978 32.3597Z" fill="#555"/>
+        <path d="M115.839 14.1077H125.667V17.4773H126.509C126.946 16.1981 127.679 15.2153 128.709 14.5289C129.77 13.8113 131.033 13.4525 132.5 13.4525C134.808 13.4525 136.665 14.1857 138.069 15.6521C139.473 17.0873 140.175 19.2869 140.175 22.2509V23.2805L134.091 23.8421V23.1869C134.091 21.9077 133.763 20.8937 133.108 20.1449C132.453 19.3649 131.47 18.9749 130.16 18.9749C128.849 18.9749 127.82 19.4273 127.071 20.3321C126.322 21.2369 125.948 22.5317 125.948 24.2165V31.7045H131.283V37.3205H115.277V31.7045H120.051V19.7237H115.839V14.1077Z" fill="#555"/>
+        <path d="M160.641 33.9509C160.017 35.4173 159.143 36.4625 158.02 37.0865C156.897 37.6793 155.586 37.9757 154.089 37.9757C152.685 37.9757 151.359 37.7105 150.111 37.1801C148.894 36.6497 147.817 35.8697 146.881 34.8401C145.945 33.8105 145.197 32.5625 144.635 31.0961C144.105 29.6297 143.839 27.9605 143.839 26.0885V25.3397C143.839 23.4989 144.105 21.8453 144.635 20.3789C145.165 18.9125 145.883 17.6645 146.788 16.6349C147.693 15.6053 148.738 14.8253 149.923 14.2949C151.14 13.7333 152.435 13.4525 153.808 13.4525C155.461 13.4525 156.787 13.7333 157.786 14.2949C158.815 14.8565 159.627 15.7301 160.219 16.9157H161.062V14.1077H166.959V30.3005C166.959 31.2365 167.38 31.7045 168.222 31.7045H169.111V37.3205H165.087C164.026 37.3205 163.152 37.0085 162.466 36.3845C161.811 35.7605 161.483 34.9493 161.483 33.9509H160.641ZM155.399 32.3597C157.115 32.3597 158.488 31.7981 159.517 30.6749C160.547 29.5205 161.062 27.9605 161.062 25.9949V25.4333C161.062 23.4677 160.547 21.9233 159.517 20.8001C158.488 19.6457 157.115 19.0685 155.399 19.0685C153.683 19.0685 152.31 19.6457 151.281 20.8001C150.251 21.9233 149.736 23.4677 149.736 25.4333V25.9949C149.736 27.9605 150.251 29.5205 151.281 30.6749C152.31 31.7981 153.683 32.3597 155.399 32.3597Z" fill="#555"/>
+        <path d="M0.226463 22.2528C-0.0754144 21.9123 -0.075552 21.4085 0.226436 21.0681C1.81887 19.2734 6.70979 13.8003 10.2551 10.255C13.8002 6.70986 19.2731 1.81915 21.068 0.226542C21.4084 -0.075514 21.9121 -0.0755141 22.2526 0.226542C24.0475 1.81915 29.5203 6.70986 33.0655 10.255C36.6107 13.8002 41.5014 19.273 43.094 21.0679C43.396 21.4084 43.396 21.9121 43.094 22.2525C41.5014 24.0474 36.6107 29.5203 33.0655 33.0654C29.5204 36.6105 24.0478 41.501 22.2527 43.0938C21.9122 43.3959 21.4085 43.396 21.0681 43.0938C19.2509 41.4804 13.6579 36.4792 10.0419 32.8523C6.57826 29.3782 1.79812 24.0252 0.226463 22.2528Z" fill="#555"/>
+      </svg>
+    </a>
+    <a href="/" class="nav-back">← Back</a>
+  </nav>
+
+  <main>
+    <div class="page-label">Legal</div>
+    <h1>Terms of Service</h1>
+    <p class="revised">Last revised: 29 March 2026</p>
+
+    <section>
+      <h2>1. Agreement</h2>
+      <p>By purchasing or using Abra you agree to these Terms of Service. Abra is developed and operated by:</p>
+      <address class="address">
+        Jacob Boutrup<br>
+        CVR-nr.: 39134918<br>
+        Lokesvej 3, 8230 Åbyhøj<br>
+        Denmark<br>
+        <a href="mailto:contact@abra.video">contact@abra.video</a>
+      </address>
+    </section>
+
+    <section>
+      <h2>2. License</h2>
+      <p>A one-time purchase of Abra grants you a personal, non-transferable license subject to the following conditions:</p>
+      <ul>
+        <li>You may install and use Abra on 1 (one) macOS device at a time.</li>
+        <li>Your license is valid for the major version purchased (e.g. all 1.x releases). Future major versions (e.g. 2.x) require a separate purchase.</li>
+        <li>You may not sublicense, resell, rent, lend, or transfer your license to any third party.</li>
+        <li>Reverse engineering, decompiling, disassembling, or modifying the software in any way is prohibited.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>3. Updates</h2>
+      <ul>
+        <li>Minor and patch updates (e.g. 1.0 → 1.1, 1.0.0 → 1.0.1) are included at no additional charge.</li>
+        <li>Major version upgrades (e.g. 1.x → 2.x) are sold as separate purchases.</li>
+        <li>We reserve the right to discontinue updates or support at any time without obligation.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>4. Payment</h2>
+      <ul>
+        <li>All payments are processed by Stripe. By completing a purchase you also agree to <a href="https://stripe.com/legal" target="_blank" rel="noopener">Stripe's terms of service</a>.</li>
+        <li>Prices are shown in euros (€).</li>
+        <li>Danish VAT (25% MOMS) is applied where required by applicable law.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>5. Right of withdrawal</h2>
+      <p>You have 14 days from purchase to request a refund, as long as you have not activated your license key. Once a license key has been activated, the right of withdrawal no longer applies, as digital content delivery has begun with your explicit consent.</p>
+      <p>To request a refund before activation, email <a href="mailto:contact@abra.video">contact@abra.video</a> within 14 days of purchase.</p>
+    </section>
+
+    <section>
+      <h2>6. Prohibited use</h2>
+      <p>You may not use Abra to create content that is unlawful, defamatory, harassing, or that infringes the intellectual property rights of any third party.</p>
+    </section>
+
+    <section>
+      <h2>7. Intellectual property</h2>
+      <p>Abra and all associated assets, user interface elements, and underlying code remain the exclusive intellectual property of Jacob Boutrup. Nothing in these Terms transfers any ownership rights to you.</p>
+    </section>
+
+    <section>
+      <h2>8. Disclaimer of warranties</h2>
+      <p>Abra is provided "as is" and "as available" without warranty of any kind, express or implied. We do not guarantee that the software will be error-free, uninterrupted, or fit for any particular purpose beyond what is described in the product documentation.</p>
+    </section>
+
+    <section>
+      <h2>9. Limitation of liability</h2>
+      <p>To the maximum extent permitted by Danish law, our total liability to you for any claim arising out of or relating to these Terms or your use of Abra is limited to the amount you paid for the software. We are not liable for any indirect, incidental, or consequential damages.</p>
+    </section>
+
+    <section>
+      <h2>10. Governing law and disputes</h2>
+      <p>These Terms are governed by the laws of Denmark. Any dispute shall be subject to the exclusive jurisdiction of the Danish courts, without prejudice to your rights as an EU consumer under applicable EU consumer protection law.</p>
+      <p>Consumer complaints may also be submitted to the Center for Klageløsning at <a href="https://www.forbrug.dk" target="_blank" rel="noopener">forbrug.dk</a>.</p>
+    </section>
+
+    <section>
+      <h2>11. Contact</h2>
+      <p>Questions about these Terms: <a href="mailto:contact@abra.video">contact@abra.video</a>.</p>
+    </section>
+  </main>
+
+  <footer>
+    <a href="/">
+      <svg width="52" height="14" viewBox="0 0 170 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M75.8899 30.3005H64.7515L63.1603 37.3205H56.7019L64.5175 4.56049H76.1239L83.9395 37.3205H77.4811L75.8899 30.3005ZM66.0619 24.4037H74.5327L70.7419 7.64929H69.8995L66.0619 24.4037Z" fill="#333"/>
+        <path d="M93.2202 37.3205H87.3234V4.56049H93.2202V17.4773H94.0626C94.6866 16.1981 95.5914 15.2153 96.777 14.5289C97.9626 13.8113 99.4758 13.4525 101.317 13.4525C102.689 13.4525 103.984 13.7177 105.201 14.2481C106.449 14.7785 107.525 15.5585 108.43 16.5881C109.366 17.5865 110.099 18.8189 110.63 20.2853C111.191 21.7517 111.472 23.4209 111.472 25.2929V26.1353C111.472 28.0385 111.207 29.7233 110.677 31.1897C110.146 32.6561 109.429 33.9041 108.524 34.9337C107.619 35.9321 106.543 36.6965 105.295 37.2269C104.078 37.7261 102.752 37.9757 101.317 37.9757C100.256 37.9757 99.3354 37.8665 98.5554 37.6481C97.7754 37.4297 97.089 37.1333 96.4962 36.7589C95.9346 36.3845 95.451 35.9633 95.0454 35.4953C94.671 34.9961 94.3434 34.4813 94.0626 33.9509H93.2202V37.3205ZM99.3978 32.3597C101.239 32.3597 102.721 31.7981 103.844 30.6749C104.998 29.5205 105.575 27.9605 105.575 25.9949V25.4333C105.575 23.4677 104.998 21.9233 103.844 20.8001C102.721 19.6457 101.239 19.0685 99.3978 19.0685C97.557 19.0685 96.0594 19.6613 94.905 20.8469C93.7818 22.0013 93.2202 23.5301 93.2202 25.4333V25.9949C93.2202 27.8981 93.7818 29.4425 94.905 30.6281C96.0594 31.7825 97.557 32.3597 99.3978 32.3597Z" fill="#333"/>
+        <path d="M115.839 14.1077H125.667V17.4773H126.509C126.946 16.1981 127.679 15.2153 128.709 14.5289C129.77 13.8113 131.033 13.4525 132.5 13.4525C134.808 13.4525 136.665 14.1857 138.069 15.6521C139.473 17.0873 140.175 19.2869 140.175 22.2509V23.2805L134.091 23.8421V23.1869C134.091 21.9077 133.763 20.8937 133.108 20.1449C132.453 19.3649 131.47 18.9749 130.16 18.9749C128.849 18.9749 127.82 19.4273 127.071 20.3321C126.322 21.2369 125.948 22.5317 125.948 24.2165V31.7045H131.283V37.3205H115.277V31.7045H120.051V19.7237H115.839V14.1077Z" fill="#333"/>
+        <path d="M160.641 33.9509C160.017 35.4173 159.143 36.4625 158.02 37.0865C156.897 37.6793 155.586 37.9757 154.089 37.9757C152.685 37.9757 151.359 37.7105 150.111 37.1801C148.894 36.6497 147.817 35.8697 146.881 34.8401C145.945 33.8105 145.197 32.5625 144.635 31.0961C144.105 29.6297 143.839 27.9605 143.839 26.0885V25.3397C143.839 23.4989 144.105 21.8453 144.635 20.3789C145.165 18.9125 145.883 17.6645 146.788 16.6349C147.693 15.6053 148.738 14.8253 149.923 14.2949C151.14 13.7333 152.435 13.4525 153.808 13.4525C155.461 13.4525 156.787 13.7333 157.786 14.2949C158.815 14.8565 159.627 15.7301 160.219 16.9157H161.062V14.1077H166.959V30.3005C166.959 31.2365 167.38 31.7045 168.222 31.7045H169.111V37.3205H165.087C164.026 37.3205 163.152 37.0085 162.466 36.3845C161.811 35.7605 161.483 34.9493 161.483 33.9509H160.641ZM155.399 32.3597C157.115 32.3597 158.488 31.7981 159.517 30.6749C160.547 29.5205 161.062 27.9605 161.062 25.9949V25.4333C161.062 23.4677 160.547 21.9233 159.517 20.8001C158.488 19.6457 157.115 19.0685 155.399 19.0685C153.683 19.0685 152.31 19.6457 151.281 20.8001C150.251 21.9233 149.736 23.4677 149.736 25.4333V25.9949C149.736 27.9605 150.251 29.5205 151.281 30.6749C152.31 31.7981 153.683 32.3597 155.399 32.3597Z" fill="#333"/>
+        <path d="M0.226463 22.2528C-0.0754144 21.9123 -0.075552 21.4085 0.226436 21.0681C1.81887 19.2734 6.70979 13.8003 10.2551 10.255C13.8002 6.70986 19.2731 1.81915 21.068 0.226542C21.4084 -0.075514 21.9121 -0.0755141 22.2526 0.226542C24.0475 1.81915 29.5203 6.70986 33.0655 10.255C36.6107 13.8002 41.5014 19.273 43.094 21.0679C43.396 21.4084 43.396 21.9121 43.094 22.2525C41.5014 24.0474 36.6107 29.5203 33.0655 33.0654C29.5204 36.6105 24.0478 41.501 22.2527 43.0938C21.9122 43.3959 21.4085 43.396 21.0681 43.0938C19.2509 41.4804 13.6579 36.4792 10.0419 32.8523C6.57826 29.3782 1.79812 24.0252 0.226463 22.2528Z" fill="#333"/>
+      </svg>
+    </a>
+    <div class="footer-links">
+      <a href="mailto:contact@abra.video">Contact</a>
+      <a href="/privacy.html">Privacy</a>
+      <a href="/terms.html">Terms</a>
+    </div>
+  </footer>
+
+</body>
+</html>
