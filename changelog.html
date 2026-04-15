@@ -4,8 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="icon" type="image/png" href="favicon.png" />
-  <title>Privacy Policy — Abra</title>
-  <meta name="description" content="Privacy Policy for Abra — cinematic product animation software." />
+  <title>Changelog — Abra</title>
+  <meta name="description" content="What's new in Abra." />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -31,9 +31,7 @@
     /* ── Nav ── */
     nav {
       position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
+      top: 0; left: 0; right: 0;
       z-index: 100;
       display: flex;
       align-items: center;
@@ -51,9 +49,6 @@
       color: var(--muted);
       text-decoration: none;
       transition: color 0.15s;
-      display: flex;
-      align-items: center;
-      gap: 6px;
     }
     .nav-back:hover { color: var(--text); }
 
@@ -76,72 +71,81 @@
       font-size: clamp(32px, 5vw, 48px);
       font-weight: 650;
       color: var(--text);
-      letter-spacing: -0.02em;
+      letter-spacing: -0.03em;
       line-height: 1.1;
-      margin-bottom: 12px;
-    }
-
-    .revised {
-      font-size: 13px;
-      color: #333;
       margin-bottom: 64px;
-      padding-bottom: 40px;
-      border-bottom: 1px solid var(--border);
     }
 
-    section {
-      margin-bottom: 52px;
+    /* ── Release ── */
+    .release {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 0 40px;
+      padding: 40px 0;
+      border-top: 1px solid var(--border);
+    }
+    .release:last-child { border-bottom: 1px solid var(--border); }
+
+    .release-meta {
+      padding-top: 3px;
     }
 
-    h2 {
-      font-size: 15px;
+    .release-version {
+      font-size: 13px;
       font-weight: 600;
       color: var(--text);
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .release-date {
+      font-size: 12px;
+      color: #333;
+    }
+
+    .release-body h2 {
+      font-size: 17px;
+      font-weight: 650;
+      color: var(--text);
+      letter-spacing: -0.02em;
       margin-bottom: 16px;
-      letter-spacing: -0.01em;
     }
 
-    p {
-      color: var(--muted);
-      margin-bottom: 14px;
-    }
-    p:last-child { margin-bottom: 0; }
-
-    ul {
-      color: var(--muted);
-      padding-left: 0;
+    .release-body ul {
       list-style: none;
       display: flex;
       flex-direction: column;
       gap: 10px;
     }
 
-    ul li {
+    .release-body ul li {
+      font-size: 14px;
+      color: var(--muted);
       padding-left: 20px;
       position: relative;
     }
 
-    ul li::before {
+    .release-body ul li::before {
       content: '—';
       position: absolute;
       left: 0;
       color: #333;
     }
 
-    a {
-      color: var(--text);
-      text-decoration: underline;
-      text-underline-offset: 3px;
-      text-decoration-color: #333;
-      transition: text-decoration-color 0.15s;
+    .tag {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 2px 7px;
+      border-radius: 4px;
+      margin-left: 8px;
+      vertical-align: middle;
+      position: relative;
+      top: -1px;
     }
-    a:hover { text-decoration-color: var(--muted); }
-
-    .address {
-      font-style: normal;
-      color: var(--muted);
-      line-height: 1.8;
-    }
+    .tag-new { background: rgba(255,255,255,0.07); color: #888; }
 
     /* ── Footer ── */
     footer {
@@ -152,10 +156,7 @@
       justify-content: space-between;
     }
 
-    .footer-links {
-      display: flex;
-      gap: 24px;
-    }
+    .footer-links { display: flex; gap: 24px; }
 
     footer a {
       font-size: 12px;
@@ -168,6 +169,7 @@
     @media (max-width: 600px) {
       nav { padding: 0 20px; }
       main { padding-top: 100px; }
+      .release { grid-template-columns: 1fr; gap: 12px; }
       footer { flex-direction: column; gap: 16px; text-align: center; }
       .footer-links { justify-content: center; }
     }
@@ -185,88 +187,33 @@
         <path d="M0.226463 22.2528C-0.0754144 21.9123 -0.075552 21.4085 0.226436 21.0681C1.81887 19.2734 6.70979 13.8003 10.2551 10.255C13.8002 6.70986 19.2731 1.81915 21.068 0.226542C21.4084 -0.075514 21.9121 -0.0755141 22.2526 0.226542C24.0475 1.81915 29.5203 6.70986 33.0655 10.255C36.6107 13.8002 41.5014 19.273 43.094 21.0679C43.396 21.4084 43.396 21.9121 43.094 22.2525C41.5014 24.0474 36.6107 29.5203 33.0655 33.0654C29.5204 36.6105 24.0478 41.501 22.2527 43.0938C21.9122 43.3959 21.4085 43.396 21.0681 43.0938C19.2509 41.4804 13.6579 36.4792 10.0419 32.8523C6.57826 29.3782 1.79812 24.0252 0.226463 22.2528Z" fill="#555"/>
       </svg>
     </a>
-    <a href="/" class="nav-back">
-      ← Back
-    </a>
+    <a href="/" class="nav-back">← Back</a>
   </nav>
 
   <main>
-    <div class="page-label">Legal</div>
-    <h1>Privacy Policy</h1>
-    <p class="revised">Last revised: 29 March 2026</p>
+    <div class="page-label">Changelog</div>
+    <h1>Changelog</h1>
 
-    <section>
-      <h2>1. Data Controller</h2>
-      <p>Abra is developed and operated by:</p>
-      <address class="address">
-        Jacob Boutrup<br>
-        CVR-nr.: 39134918<br>
-        Lokesvej 3, 8230 Åbyhøj<br>
-        Denmark<br>
-        <a href="mailto:contact@abra.video">contact@abra.video</a>
-      </address>
-    </section>
+    <div class="release">
+      <div class="release-meta">
+        <span class="release-version">v1.0.0</span>
+        <span class="release-date">10 Apr 2026</span>
+      </div>
+      <div class="release-body">
+        <h2>Initial release</h2>
+        <ul>
+          <li>Screenshot to video in minutes — drag in any image and animate it instantly</li>
+          <li>Cinematic animation presets with full keyframe editor</li>
+          <li>Device frames — macOS window, browser chrome, iPhone</li>
+          <li>Gradient, solid, and image backgrounds</li>
+<li>Export to MP4 at up to 4K resolution</li>
+          <li>One-time purchase, no subscription</li>
+        </ul>
+      </div>
+    </div>
 
-    <section>
-      <h2>2. What data we collect</h2>
-      <ul>
-        <li><strong style="color: var(--text); font-weight: 500;">Purchase data</strong> — your email address, collected by Stripe at checkout and used solely to deliver your license key.</li>
-        <li><strong style="color: var(--text); font-weight: 500;">Device fingerprint</strong> — a hardware-derived identifier (derived from your CPU model, core count, hostname, and MAC address) stored locally on your device and in our license database to enforce the 1-device-per-license policy.</li>
-        <li><strong style="color: var(--text); font-weight: 500;">No analytics or tracking</strong> — Abra contains no analytics SDK, no tracking pixels, and no cookies beyond what Stripe's checkout flow requires.</li>
-        <li><strong style="color: var(--text); font-weight: 500;">No accounts</strong> — we do not store passwords or create user accounts.</li>
-      </ul>
-    </section>
+    <p style="margin-top: 48px; font-size: 14px; color: #444;">Have a feature request? <a href="mailto:contact@abra.video" style="color: #888; text-underline-offset: 3px;">Let us know.</a></p>
 
-    <section>
-      <h2>3. Why we collect it</h2>
-      <p>Legal basis under GDPR Article 6:</p>
-      <ul>
-        <li><strong style="color: var(--text); font-weight: 500;">Email address</strong> — to deliver your license key. Legal basis: performance of a contract (Art. 6(1)(b)).</li>
-        <li><strong style="color: var(--text); font-weight: 500;">Device fingerprint</strong> — to enforce license terms and prevent abuse. Legal basis: legitimate interest (Art. 6(1)(f)).</li>
-      </ul>
-    </section>
-
-    <section>
-      <h2>4. Who we share data with</h2>
-      <p>We use the following data processors. No data is sold, shared with advertisers, or used for marketing purposes.</p>
-      <ul>
-        <li><strong style="color: var(--text); font-weight: 500;">Stripe</strong> — payment processing. GDPR compliant. <a href="https://stripe.com/privacy" target="_blank" rel="noopener">stripe.com/privacy</a></li>
-        <li><strong style="color: var(--text); font-weight: 500;">Resend</strong> — transactional email delivery (license key emails). <a href="https://resend.com/privacy" target="_blank" rel="noopener">resend.com/privacy</a></li>
-        <li><strong style="color: var(--text); font-weight: 500;">Supabase</strong> — license key storage, hosted in the EU region. <a href="https://supabase.com/privacy" target="_blank" rel="noopener">supabase.com/privacy</a></li>
-      </ul>
-    </section>
-
-    <section>
-      <h2>5. Data retention</h2>
-      <ul>
-        <li>License records are retained for as long as the license is active, and for up to 5 years thereafter for accounting compliance under the Danish Bogføringsloven.</li>
-        <li>Your email address will be deleted upon request, unless retention is required by applicable law.</li>
-      </ul>
-    </section>
-
-    <section>
-      <h2>6. Your rights under GDPR</h2>
-      <p>As an EU/EEA resident you have the right to:</p>
-      <ul>
-        <li>Access the personal data we hold about you</li>
-        <li>Correct inaccurate or incomplete data</li>
-        <li>Request deletion of your data ("right to be forgotten")</li>
-        <li>Object to processing based on legitimate interest</li>
-        <li>Receive your data in a portable format</li>
-        <li>Lodge a complaint with the Danish data protection authority, Datatilsynet, at <a href="https://www.datatilsynet.dk" target="_blank" rel="noopener">datatilsynet.dk</a></li>
-      </ul>
-      <p style="margin-top: 16px;">To exercise any of these rights, contact us at <a href="mailto:contact@abra.video">contact@abra.video</a>.</p>
-    </section>
-
-    <section>
-      <h2>7. Contact</h2>
-      <p>Privacy-related enquiries: <a href="mailto:contact@abra.video">contact@abra.video</a>. We will respond within 30 days as required by GDPR.</p>
-    </section>
-
-    <section>
-      <h2>8. Changes to this policy</h2>
-      <p>We may update this Privacy Policy from time to time. The "Last revised" date at the top of this page reflects when changes were last made. Continued use of Abra after a revision constitutes acceptance of the updated policy.</p>
-    </section>
   </main>
 
   <footer>
